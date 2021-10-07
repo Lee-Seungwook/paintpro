@@ -58,6 +58,7 @@
 #define IDD_DIALOG1                     368
 #define IDD_CHAT_CLIENT                 370
 #define IDD_IPCONNECT                   372
+#define IDD_CHAT_SERVER                 374
 #define IDC_WIDTH                       1000
 #define IDC_HEIGHT                      1001
 #define IDC_IMAGE_TYPE                  1002
@@ -128,8 +129,8 @@
 #define IDC_BUTTON_SEND                 1043
 #define IDC_BUTTON_CONNECT              1044
 #define IDC_IPADDRESS1                  1045
-#define IDC_BUTTON_CONNECT2             1045
 #define IDC_BUTTON_REFRESH              1045
+#define IDC_BUTTON1                     1046
 #define ID_32771                        32771
 #define ID_WINDOW_DUPLICATE             32772
 #define ID_32773                        32773
@@ -325,14 +326,15 @@
 #define ID_CHAT_SERVER                  32983
 #define ID_32984                        32984
 #define ID_CHAT_CLIENT                  32985
+#define ID_32986                        32986
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        374
-#define _APS_NEXT_COMMAND_VALUE         32986
-#define _APS_NEXT_CONTROL_VALUE         1046
+#define _APS_NEXT_RESOURCE_VALUE        376
+#define _APS_NEXT_COMMAND_VALUE         32987
+#define _APS_NEXT_CONTROL_VALUE         1047
 #define _APS_NEXT_SYMED_VALUE           311
 #endif
 #endif

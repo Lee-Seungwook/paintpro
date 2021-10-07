@@ -194,7 +194,9 @@
     <ClInclude Include="BrightnessContrastDlg.h" />
     <ClInclude Include="CannyEdgeDlg.h" />
     <ClInclude Include="ChattingClientDlg.h" />
+    <ClInclude Include="ChattingServerDlg.h" />
     <ClInclude Include="ChildFrm.h" />
+    <ClInclude Include="ChildSocket.h" />
     <ClInclude Include="ClientSocket.h" />
     <ClInclude Include="ColorCombineDlg.h" />
     <ClInclude Include="ConnectDlg.h" />
@@ -222,6 +224,7 @@
     <ClInclude Include="IppImage\RGBBYTE.h" />
     <ClInclude Include="IppSegment.h" />
     <ClInclude Include="LineStyleDlg.h" />
+    <ClInclude Include="ListenSocket.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="MyColorFill.h" />
     <ClInclude Include="MyData.h" />
@@ -252,7 +255,9 @@
     <ClCompile Include="BrightnessContrastDlg.cpp" />
     <ClCompile Include="CannyEdgeDlg.cpp" />
     <ClCompile Include="ChattingClientDlg.cpp" />
+    <ClCompile Include="ChattingServerDlg.cpp" />
     <ClCompile Include="ChildFrm.cpp" />
+    <ClCompile Include="ChildSocket.cpp" />
     <ClCompile Include="ClientSocket.cpp" />
     <ClCompile Include="ColorCombineDlg.cpp" />
     <ClCompile Include="ConnectDlg.cpp" />
@@ -278,6 +283,7 @@
     <ClCompile Include="IppImage\IppEnhance.cpp" />
     <ClCompile Include="IppSegment.cpp" />
     <ClCompile Include="LineStyleDlg.cpp" />
+    <ClCompile Include="ListenSocket.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="MyColorFill.cpp" />
     <ClCompile Include="MyData.cpp" />

@@ -15,6 +15,7 @@
 #include "ImageToolView.h"
 
 #include "ChattingClientDlg.h"
+#include "ChattingServerDlg.h"
 
 #include "ThickDlg.h"
 #include "LineStyleDlg.h"
@@ -92,6 +93,7 @@ BEGIN_MESSAGE_MAP(CImageToolView, CScrollView)
 //ON_COMMAND(ID_CHAT_SERVER, &CImageToolView::OnChatServer)
 //ON_COMMAND(ID_CHAT_CLIENT, &CImageToolView::OnChatClient)
 ON_COMMAND(ID_CHAT_CLIENT, &CImageToolView::OnChatClient)
+ON_COMMAND(ID_CHAT_SERVER, &CImageToolView::OnChatServer)
 END_MESSAGE_MAP()
 
 // CImageToolView 생성/소멸
@@ -1742,4 +1744,18 @@ void CImageToolView::OnChatClient()
 	}
 	dlg.ShowWindow(SW_SHOW);
 	
+}
+
+
+
+
+void CImageToolView::OnChatServer()
+{
+	// TODO: 여기에 명령 처리기 코드를 추가합니다.
+	static CChattingServerDlg dlg;
+	if (dlg.GetSafeHwnd() == NULL)
+	{
+		dlg.Create(IDD_CHAT_SERVER);
+	}
+	dlg.ShowWindow(SW_SHOW);
 }
