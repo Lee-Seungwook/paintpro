@@ -20,21 +20,21 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{6A4EC50A-C03F-45C5-966E-EED2B79C2DD0}</ProjectGuid>
-    <Keyword>MFCProj</Keyword>
-    <RootNamespace>ImageTool</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
+    <ProjectGuid>{4D5E753D-C2B0-48EA-BFD8-F6C05464A09E}</ProjectGuid>
+    <Keyword>MFCDLLProj</Keyword>
+    <RootNamespace>ChatClienLibrary</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -42,14 +42,14 @@
     <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -88,20 +88,19 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_AFXEXT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <AdditionalLibraryDirectories>$(OutDir)</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>.\ChatClienLibrary.def</ModuleDefinitionFile>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
-      <ValidateAllParameters>true</ValidateAllParameters>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </Midl>
     <ResourceCompile>
@@ -116,15 +115,15 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDOWS;_DEBUG;_AFXEXT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
+      <ModuleDefinitionFile>.\ChatClienLibrary.def</ModuleDefinitionFile>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
-      <ValidateAllParameters>true</ValidateAllParameters>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </Midl>
     <ResourceCompile>
@@ -141,17 +140,17 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_AFXEXT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <ModuleDefinitionFile>.\ChatClienLibrary.def</ModuleDefinitionFile>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
-      <ValidateAllParameters>true</ValidateAllParameters>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </Midl>
     <ResourceCompile>
@@ -168,17 +167,17 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDOWS;NDEBUG;_AFXEXT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <ModuleDefinitionFile>.\ChatClienLibrary.def</ModuleDefinitionFile>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
-      <ValidateAllParameters>true</ValidateAllParameters>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </Midl>
     <ResourceCompile>
@@ -188,142 +187,42 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="AddNoiseDlg.h" />
-    <ClInclude Include="ArithmeticLogicalDlg.h" />
-    <ClInclude Include="BinarizationDlg.h" />
-    <ClInclude Include="BrightnessContrastDlg.h" />
-    <ClInclude Include="CannyEdgeDlg.h" />
-    <ClInclude Include="ChattingClientDlg.h" />
-    <ClInclude Include="ChildFrm.h" />
-    <ClInclude Include="ClientSocket.h" />
-    <ClInclude Include="ColorCombineDlg.h" />
-    <ClInclude Include="ConnectDlg.h" />
-    <ClInclude Include="DiffusionDlg.h" />
-    <ClInclude Include="FileNewDlg.h" />
-    <ClInclude Include="framework.h" />
-    <ClInclude Include="FreqFilteringDlg.h" />
-    <ClInclude Include="GammaCorrectionDlg.h" />
-    <ClInclude Include="GaussianDlg.h" />
-    <ClInclude Include="HarrisCornerDlg.h" />
-    <ClInclude Include="HighboostDlg.h" />
-    <ClInclude Include="HistogramDlg.h" />
-    <ClInclude Include="ImageTool.h" />
-    <ClInclude Include="ImageToolDoc.h" />
-    <ClInclude Include="ImageToolView.h" />
-    <ClInclude Include="IppColor.h" />
-    <ClInclude Include="IppFeature.h" />
-    <ClInclude Include="IppFilter.h" />
-    <ClInclude Include="IppFourier.h" />
-    <ClInclude Include="IppGeometry.h" />
-    <ClInclude Include="IppImage\IppConvert.h" />
-    <ClInclude Include="IppImage\IppDib.h" />
-    <ClInclude Include="IppImage\IppEnhance.h" />
-    <ClInclude Include="IppImage\IppImage.h" />
-    <ClInclude Include="IppImage\RGBBYTE.h" />
-    <ClInclude Include="IppSegment.h" />
-    <ClInclude Include="LineStyleDlg.h" />
-    <ClInclude Include="MainFrm.h" />
-    <ClInclude Include="MyColorFill.h" />
-    <ClInclude Include="MyData.h" />
-    <ClInclude Include="MyEllipse.h" />
-    <ClInclude Include="MyErase.h" />
-    <ClInclude Include="MyPentagon.h" />
-    <ClInclude Include="MyRect.h" />
-    <ClInclude Include="MyRhombus.h" />
-    <ClInclude Include="MyRightTriangle.h" />
-    <ClInclude Include="MyRoundRect.h" />
-    <ClInclude Include="MyStick.h" />
-    <ClInclude Include="MyTriangle.h" />
-    <ClInclude Include="OutputWnd.h" />
-    <ClInclude Include="pch.h" />
-    <ClInclude Include="ResizeDlg.h" />
-    <ClInclude Include="Resource.h" />
-    <ClInclude Include="RotateDlg.h" />
-    <ClInclude Include="SelectDiffImageDlg.h" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="targetver.h" />
-    <ClInclude Include="ThickDlg.h" />
-    <ClInclude Include="TranslateDlg.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="AddNoiseDlg.cpp" />
-    <ClCompile Include="ArithmeticLogicalDlg.cpp" />
-    <ClCompile Include="BinarizationDlg.cpp" />
-    <ClCompile Include="BrightnessContrastDlg.cpp" />
-    <ClCompile Include="CannyEdgeDlg.cpp" />
-    <ClCompile Include="ChattingClientDlg.cpp" />
-    <ClCompile Include="ChildFrm.cpp" />
-    <ClCompile Include="ClientSocket.cpp" />
-    <ClCompile Include="ColorCombineDlg.cpp" />
-    <ClCompile Include="ConnectDlg.cpp" />
-    <ClCompile Include="CTranslateDlg.cpp" />
-    <ClCompile Include="DiffusionDlg.cpp" />
-    <ClCompile Include="FileNewDlg.cpp" />
-    <ClCompile Include="FreqFilteringDlg.cpp" />
-    <ClCompile Include="GammaCorrectionDlg.cpp" />
-    <ClCompile Include="GaussianDlg.cpp" />
-    <ClCompile Include="HarrisCornerDlg.cpp" />
-    <ClCompile Include="HighboostDlg.cpp" />
-    <ClCompile Include="HistogramDlg.cpp" />
-    <ClCompile Include="ImageTool.cpp" />
-    <ClCompile Include="ImageToolDoc.cpp" />
-    <ClCompile Include="ImageToolView.cpp" />
-    <ClCompile Include="IppColor.cpp" />
-    <ClCompile Include="IppFeature.cpp" />
-    <ClCompile Include="IppFilter.cpp" />
-    <ClCompile Include="IppFourier.cpp" />
-    <ClCompile Include="IppGeometry.cpp" />
-    <ClCompile Include="IppImage\IppConvert.cpp" />
-    <ClCompile Include="IppImage\IppDib.cpp" />
-    <ClCompile Include="IppImage\IppEnhance.cpp" />
-    <ClCompile Include="IppSegment.cpp" />
-    <ClCompile Include="LineStyleDlg.cpp" />
-    <ClCompile Include="MainFrm.cpp" />
-    <ClCompile Include="MyColorFill.cpp" />
-    <ClCompile Include="MyData.cpp" />
-    <ClCompile Include="MyEllipse.cpp" />
-    <ClCompile Include="MyErase.cpp" />
-    <ClCompile Include="MyPentagon.cpp" />
-    <ClCompile Include="MyRect.cpp" />
-    <ClCompile Include="MyRhombus.cpp" />
-    <ClCompile Include="MyRightTriangle.cpp" />
-    <ClCompile Include="MyRoundRect.cpp" />
-    <ClCompile Include="MyStick.cpp" />
-    <ClCompile Include="MyTriangle.cpp" />
-    <ClCompile Include="OutputWnd.cpp" />
+    <ClCompile Include="ChatClienLibrary.cpp" />
+    <ClCompile Include="ClientAPI.cpp" />
+    <ClCompile Include="dllmain.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="ResizeDlg.cpp" />
-    <ClCompile Include="RotateDlg.cpp" />
-    <ClCompile Include="SelectDiffImageDlg.cpp" />
-    <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="ThickDlg.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ImageTool.reg" />
-    <None Include="POINTER.cur" />
-    <None Include="res\cur00001.cur" />
-    <None Include="res\cur00002.cur" />
-    <None Include="res\cur00003.cur" />
-    <None Include="res\cursor1.cur" />
-    <None Include="res\ImageTool.rc2" />
+    <None Include="ChatClienLibrary.def" />
+    <None Include="res\ChatClienLibrary.rc2" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="ImageTool.rc" />
+    <ClInclude Include="ClientAPI.h" />
+    <ClInclude Include="framework.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\ImageTool.ico" />
-    <Image Include="res\ImageToolDoc.ico" />
-    <Image Include="res\output_wnd.ico" />
-    <Image Include="res\output_wnd_hc.ico" />
-    <Image Include="res\Toolbar.bmp" />
-    <Image Include="res\toolbar1.bmp" />
-    <Image Include="res\Toolbar256.bmp" />
-    <Image Include="res\userimages.bmp" />
+    <ResourceCompile Include="ChatClienLibrary.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

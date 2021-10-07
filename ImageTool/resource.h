@@ -128,6 +128,8 @@
 #define IDC_BUTTON_SEND                 1043
 #define IDC_BUTTON_CONNECT              1044
 #define IDC_IPADDRESS1                  1045
+#define IDC_BUTTON_CONNECT2             1045
+#define IDC_BUTTON_REFRESH              1045
 #define ID_32771                        32771
 #define ID_WINDOW_DUPLICATE             32772
 #define ID_32773                        32773
