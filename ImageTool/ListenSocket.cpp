@@ -3,8 +3,8 @@
 #include "ChildSocket.h"
 #include "ChattingServerDlg.h"
 
-#include "..\ChatClienLibrary\ServerListenAPI.h"
-#pragma comment( lib, "../ImageTool/Debug/ChatClienLibrary.lib" )
+#include "ChatClienLibarary/ServerListenAPI.h"
+#pragma comment( lib, "ChatClienLibrary.lib" )
 
 void CListenSocket::OnAccept(int nErrorCode)
 {

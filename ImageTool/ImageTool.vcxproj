@@ -97,7 +97,8 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <AdditionalLibraryDirectories>$(OutDir)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(solutiondir)ChatClienLibarary\</AdditionalLibraryDirectories>
+      <LargeAddressAware>true</LargeAddressAware>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -247,6 +248,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="ThickDlg.h" />
     <ClInclude Include="TranslateDlg.h" />
+    <ClInclude Include="UIThread.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AddNoiseDlg.cpp" />
@@ -308,6 +310,7 @@
     <ClCompile Include="SelectDiffImageDlg.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="ThickDlg.cpp" />
+    <ClCompile Include="UIThread.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ImageTool.reg" />

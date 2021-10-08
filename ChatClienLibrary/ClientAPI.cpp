@@ -14,14 +14,14 @@ void ClientAPI::APIClose(int nErrorCode)
 	AfxMessageBox(_T("ERROR : Disconnected from server!"));
 }
 
-void ClientAPI::APIReceive(char *szBuffer, CString& tmp)
+void ClientAPI::APIReceive(char *szBuffer, CString& tmp, CChattingClientDlg* (&handle))
 {
 	// szBuffer는 문제 없이 넘어옴, 핸들러를 만들어주는 것이 잘못된것 같음
 	tmp.Format(_T("%s"), szBuffer);
-
-	/*CChattingClientDlg* pMain = (CChattingClientDlg*)AfxGetMainWnd();
-	pMain->m_List.AddString(tmp);
-	pMain->m_List.SetCurSel(pMain->m_List.GetCount() - 1);*/
+	
+	
+	handle->m_List.AddString(tmp);
+	handle->m_List.SetCurSel(handle->m_List.GetCount() - 1);
 
 	AfxMessageBox(_T("리스트 추가 확인"));
 }

@@ -35,7 +35,15 @@ END_MESSAGE_MAP()
 
 
 // CChattingServerDlg 메시지 처리기
+void CChattingServerDlg::OnClickedButtonRefresh()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	UpdateData();
 
+	AfxMessageBox(m_Server.input);
+	m_ListServer.InsertString(0, m_Server.input);
+	m_Server.tmp = _T("");
+}
 
 BOOL CChattingServerDlg::OnInitDialog()
 {
@@ -91,12 +99,4 @@ void CChattingServerDlg::OnDestroy()
 }
 
 
-void CChattingServerDlg::OnClickedButtonRefresh()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	UpdateData();
-	
-	AfxMessageBox(m_Server.input);
-	m_ListServer.InsertString(0, m_Server.input);
-	m_Server.tmp = _T("");
-}
+

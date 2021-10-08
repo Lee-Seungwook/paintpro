@@ -192,6 +192,9 @@
     <ClInclude Include="ChildSocket.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="UIThread.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ImageTool.cpp">
@@ -354,6 +357,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="ChildSocket.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="UIThread.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

@@ -3,7 +3,8 @@
 #include "ChattingClientDlg.h"
 #include <Windows.h>
 
-#include "..\ChatClienLibrary\ClientAPI.h"
+
+#include "ChatClienLibarary/ClientAPI.h"
 #pragma comment( lib, "ChatClienLibrary.lib")
 
 void CClientSocket::OnClose(int nErrorCode)
@@ -23,8 +24,12 @@ void CClientSocket::OnReceive(int nErrorCode)
 	if (Receive(szBuffer, 1024) > 0)
 	{
 		// tmp.Format(_T("%s"), szBuffer);
+		CChattingClientDlg dlg;
+		dlg.m_hWnd;
+		CChattingClientDlg* pMain = (CChattingClientDlg*)AfxGetMainWnd();
+
 		ClientAPI APIR;
-		APIR.APIReceive(szBuffer, tmp);
+		APIR.APIReceive(szBuffer, tmp, pMain);
 	}
 	CSocket::OnReceive(nErrorCode);
 }

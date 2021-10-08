@@ -30,4 +30,6 @@ public:
 	afx_msg void OnClickedButtonSend();
 	afx_msg void OnClickedButtonRefresh();
 	virtual BOOL OnInitDialog();
+	afx_msg void OnDestroy();
+	afx_msg void OnBnClickedOk();
 };
