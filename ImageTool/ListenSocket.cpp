@@ -3,6 +3,9 @@
 #include "ChildSocket.h"
 #include "ChattingServerDlg.h"
 
+#include "..\ChatClienLibrary\ServerListenAPI.h"
+#pragma comment( lib, "../ImageTool/Debug/ChatClienLibrary.lib" )
+
 void CListenSocket::OnAccept(int nErrorCode)
 {
 	// TODO: 여기에 특수화된 코드를 추가 및/또는 기본 클래스를 호출합니다.
@@ -30,21 +33,23 @@ void CListenSocket::OnAccept(int nErrorCode)
 void CListenSocket::CloseClientSocket(CSocket* pChild)
 {
 	// TODO: 여기에 구현 코드 추가.
-	POSITION pos;
+	/*POSITION pos;
 	pos = m_ptrChildSocketList.Find(pChild);
 	if (pos != NULL) {
 		pChild->ShutDown();
 		pChild->Close();
 	}
 	m_ptrChildSocketList.RemoveAt(pos);
-	delete pChild;
+	delete pChild;*/
+	CServerListenAPI API;
+	API.APICloseClientSocket(pChild, m_ptrChildSocketList);
 }
 
 
 void CListenSocket::BroadCast(char* pszBuffer, int len)
 {
 	// TODO: 여기에 구현 코드 추가.
-	POSITION pos;
+	/*POSITION pos;
 	pos = m_ptrChildSocketList.GetHeadPosition();
 	CChildSocket* pChild = NULL;
 
@@ -53,6 +58,8 @@ void CListenSocket::BroadCast(char* pszBuffer, int len)
 		pChild = (CChildSocket*)m_ptrChildSocketList.GetNext(pos);
 		if (pChild != NULL)
 			pChild->Send(pszBuffer, len * 2);
-	}
+	}*/
+	CServerListenAPI APIL;
+	APIL.APIBroadCast(pszBuffer, len, m_ptrChildSocketList);
 }
 
