@@ -17,6 +17,8 @@
 #include "ChattingClientDlg.h"
 #include "ChattingServerDlg.h"
 #include "UIThread.h"
+#include "UIServerThread.h"
+
 #include "ThickDlg.h"
 #include "LineStyleDlg.h"
 #include "MyData.h"
@@ -144,21 +146,29 @@ BOOL CImageToolView::PreCreateWindow(CREATESTRUCT& cs)
 	return CScrollView::PreCreateWindow(cs);
 }
 
-UINT ClientThread(LPVOID parma)
-{
-	/*static CChattingClientDlg dlg;
-	if (dlg.GetSafeHwnd() == NULL)
-	{
-		dlg.Create(IDD_CHAT_CLIENT);
-	}
-	dlg.ShowWindow(SW_SHOW);*/
-
-	CChattingClientDlg dlg;
-	if (dlg.DoModal() == IDOK)
-		::PostQuitMessage(WM_QUIT);
-
-	return 0;
-}
+//UINT ClientThread(LPVOID parma)
+//{
+//	/*static CChattingClientDlg dlg;
+//	if (dlg.GetSafeHwnd() == NULL)
+//	{
+//		dlg.Create(IDD_CHAT_CLIENT);
+//	}
+//	dlg.ShowWindow(SW_SHOW);*/
+//
+//	CChattingClientDlg dlg;
+//	if (dlg.DoModal() == IDOK)
+//		::PostQuitMessage(WM_QUIT);
+//
+//	return 0;
+//}
+//
+//UINT ServerThread(LPVOID parma)
+//{
+//	CChattingServerDlg dlg;
+//	if (dlg.DoModal() == IDOK)
+//		::PostQuitMessage(WM_QUIT);
+//	return 0;
+//}
 
 // CImageToolView 그리기
 
@@ -1749,17 +1759,7 @@ void CImageToolView::OnAllErase()
 void CImageToolView::OnChatClient()
 {
 	// TODO: 여기에 명령 처리기 코드를 추가합니다.
-	/*chatdlg = new CChattingClientDlg;
-	chatdlg->Create(IDD_CHAT_CLIENT, this);
-	chatdlg->ShowWindow(SW_SHOW);*/
-
-	/*static CChattingClientDlg dlg;
-	if (dlg.GetSafeHwnd() == NULL)
-	{
-		dlg.Create(IDD_CHAT_CLIENT);
-	}
-	dlg.ShowWindow(SW_SHOW);*/
-
+	
 	AfxBeginThread(RUNTIME_CLASS(CUIThread));
 	
 }
@@ -1770,10 +1770,6 @@ void CImageToolView::OnChatClient()
 void CImageToolView::OnChatServer()
 {
 	// TODO: 여기에 명령 처리기 코드를 추가합니다.
-	static CChattingServerDlg dlg;
-	if (dlg.GetSafeHwnd() == NULL)
-	{
-		dlg.Create(IDD_CHAT_SERVER);
-	}
-	dlg.ShowWindow(SW_SHOW);
+	
+	AfxBeginThread(RUNTIME_CLASS(CUIServerThread));
 }

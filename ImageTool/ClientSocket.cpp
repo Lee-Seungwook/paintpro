@@ -24,12 +24,11 @@ void CClientSocket::OnReceive(int nErrorCode)
 	if (Receive(szBuffer, 1024) > 0)
 	{
 		// tmp.Format(_T("%s"), szBuffer);
-		CChattingClientDlg dlg;
-		dlg.m_hWnd;
-		CChattingClientDlg* pMain = (CChattingClientDlg*)AfxGetMainWnd();
+		
+		// CChattingClientDlg* pMain = (CChattingClientDlg*)AfxGetMainWnd();
 
 		ClientAPI APIR;
-		APIR.APIReceive(szBuffer, tmp, pMain);
+		APIR.APIReceive(szBuffer, tmp);
 	}
 	CSocket::OnReceive(nErrorCode);
 }

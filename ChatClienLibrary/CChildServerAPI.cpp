@@ -10,9 +10,9 @@
 
 void CChildServerAPI::APIReceive(char *szBuffer, CString& tmp, CString& strIPAddress, int len)
 {
-	/*CChattingServerDlg* pMain = (CChattingServerDlg*)AfxGetApp()->GetMainWnd();
-	pMain->m_Server.AddString(tmp);
-	pMain->m_Server.SetCurSel(pMain->m_List.GetCount() - 1);*/
+	CChattingServerDlg* pMain = (CChattingServerDlg*)AfxGetApp()->GetMainWnd();
+	pMain->m_ListServer.AddString(tmp);
+	pMain->m_ListServer.SetCurSel(pMain->m_ListServer.GetCount() - 1);
 
 	tmp.Format(_T("[%s] : %s"), strIPAddress, szBuffer);
 }

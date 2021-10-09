@@ -248,6 +248,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="ThickDlg.h" />
     <ClInclude Include="TranslateDlg.h" />
+    <ClInclude Include="UIServerThread.h" />
     <ClInclude Include="UIThread.h" />
   </ItemGroup>
   <ItemGroup>
@@ -310,6 +311,7 @@
     <ClCompile Include="SelectDiffImageDlg.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="ThickDlg.cpp" />
+    <ClCompile Include="UIServerThread.cpp" />
     <ClCompile Include="UIThread.cpp" />
   </ItemGroup>
   <ItemGroup>
