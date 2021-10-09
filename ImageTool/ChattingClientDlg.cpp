@@ -6,6 +6,7 @@
 #include "ChattingClientDlg.h"
 #include "afxdialogex.h"
 #include "ConnectDlg.h"
+#include "UIThread.h"
 
 
 // CChattingClientDlg 대화 상자
@@ -36,6 +37,9 @@ void CChattingClientDlg::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CChattingClientDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON_CONNECT, &CChattingClientDlg::OnClickedButtonConnect)
 	ON_BN_CLICKED(IDC_BUTTON_SEND, &CChattingClientDlg::OnClickedButtonSend)
+	ON_BN_CLICKED(IDC_BUTTON_REFRESH, &CChattingClientDlg::OnClickedButtonRefresh)
+	ON_WM_DESTROY()
+	ON_BN_CLICKED(IDOK, &CChattingClientDlg::OnBnClickedOk)
 END_MESSAGE_MAP()
 
 
@@ -62,7 +66,51 @@ void CChattingClientDlg::OnClickedButtonSend()
 	UpdateData(TRUE);
 
 	m_Client.Send((LPCTSTR)m_strData, m_strData.GetLength() * 2);
-
 	m_strData = _T("");
+
 	UpdateData(FALSE);
+}
+
+
+void CChattingClientDlg::OnClickedButtonRefresh()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	UpdateData();
+	m_List.InsertString(0, m_Client.tmp);
+	m_Client.tmp = _T("");
+}
+
+
+BOOL CChattingClientDlg::OnInitDialog()
+{
+	CDialogEx::OnInitDialog();
+
+	// TODO:  여기에 추가 초기화 작업을 추가합니다.
+	WSADATA wd;
+	memset(&wd, 0, sizeof(wd));
+	WSAStartup(MAKEWORD(2, 2), &wd);
+	return TRUE;  // return TRUE unless you set the focus to a control
+				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
+}
+
+
+void CChattingClientDlg::OnDestroy()
+{
+	CDialogEx::OnDestroy();
+
+	// TODO: 여기에 메시지 처리기 코드를 추가합니다.
+	
+	
+	
+}
+
+
+void CChattingClientDlg::OnBnClickedOk()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	OnDestroy();
+	
+	
+
+
 }

@@ -25,6 +25,11 @@ public:
 	CString m_strData;
 	CButton m_ButtonSend;
 	CButton m_ButtonConnect;
+	
 	afx_msg void OnClickedButtonConnect();
 	afx_msg void OnClickedButtonSend();
+	afx_msg void OnClickedButtonRefresh();
+	virtual BOOL OnInitDialog();
+	afx_msg void OnDestroy();
+	afx_msg void OnBnClickedOk();
 };
