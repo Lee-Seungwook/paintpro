@@ -37,7 +37,7 @@ void CChattingClientDlg::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CChattingClientDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON_CONNECT, &CChattingClientDlg::OnClickedButtonConnect)
 	ON_BN_CLICKED(IDC_BUTTON_SEND, &CChattingClientDlg::OnClickedButtonSend)
-	ON_BN_CLICKED(IDC_BUTTON_REFRESH, &CChattingClientDlg::OnClickedButtonRefresh)
+	
 	ON_WM_DESTROY()
 	ON_BN_CLICKED(IDOK, &CChattingClientDlg::OnBnClickedOk)
 END_MESSAGE_MAP()
@@ -72,13 +72,7 @@ void CChattingClientDlg::OnClickedButtonSend()
 }
 
 
-void CChattingClientDlg::OnClickedButtonRefresh()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	UpdateData();
-	m_List.InsertString(0, m_Client.tmp);
-	m_Client.tmp = _T("");
-}
+
 
 
 BOOL CChattingClientDlg::OnInitDialog()

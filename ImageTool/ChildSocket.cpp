@@ -36,12 +36,8 @@ void CChildSocket::OnReceive(int nErrorCode)
 	int len;
 	if ((len = Receive(szBuffer, 1024)) > 0)
 	{
-		CChattingServerDlg* pMain = (CChattingServerDlg*)AfxGetMainWnd();
-		tmp.Format(_T("[%s] : %s"), strIPAddress, szBuffer);
-		pMain->m_ListServer.AddString(tmp);
-		pMain->m_ListServer.SetCurSel(pMain->m_ListServer.GetCount() - 1);
-		/*CChildServerAPI API;
-		API.APIReceive(szBuffer, tmp, strIPAddress, len);*/
+		CChildServerAPI API;
+		API.APIReceive(szBuffer, tmp, strIPAddress, len);
 
 		CListenSocket* pServerSocket = (CListenSocket*)m_pListenSocket;
 		pServerSocket->BroadCast(szBuffer, len);

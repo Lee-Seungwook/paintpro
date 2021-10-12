@@ -22,6 +22,4 @@ void ClientAPI::APIReceive(char *szBuffer, CString& tmp)
 	CChattingClientDlg* pMain = (CChattingClientDlg*)AfxGetMainWnd();
 	pMain->m_List.AddString(tmp);
 	pMain->m_List.SetCurSel(pMain->m_List.GetCount() - 1);
-
-	AfxMessageBox(_T("리스트 추가 확인"));
 }
