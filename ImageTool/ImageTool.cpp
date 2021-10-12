@@ -14,6 +14,12 @@
 #include "ImageToolDoc.h"
 #include "ImageToolView.h"
 
+#include "ChattingClientDlg.h"
+#include "ChattingServerDlg.h"
+#include "UIThread.h"
+#include "UIServerThread.h"
+
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -31,6 +37,10 @@ BEGIN_MESSAGE_MAP(CImageToolApp, CWinAppEx)
 	ON_COMMAND(ID_EDIT_PASTE, &CImageToolApp::OnEditPaste)
 	ON_UPDATE_COMMAND_UI(ID_EDIT_PASTE, &CImageToolApp::OnUpdateEditPaste)
 	ON_COMMAND(ID_WINDOW_CLOSEALL, &CImageToolApp::OnWindowCloseall)
+	ON_COMMAND(ID_CHAT_CLIENT, &CImageToolApp::OnChatClient)
+//	ON_UPDATE_COMMAND_UI(ID_CHAT_CLIENT, &CImageToolApp::OnUpdateChatClient)
+	ON_COMMAND(ID_CHAT_SERVER, &CImageToolApp::OnChatServer)
+//	ON_UPDATE_COMMAND_UI(ID_CHAT_SERVER, &CImageToolApp::OnUpdateChatServer)
 END_MESSAGE_MAP()
 
 
@@ -311,3 +321,20 @@ void CImageToolApp::OnWindowCloseall()
 //{
 //	// TODO: 여기에 명령 처리기 코드를 추가합니다.
 //}
+
+
+void CImageToolApp::OnChatClient()
+{
+	// TODO: 여기에 명령 처리기 코드를 추가합니다.
+	AfxBeginThread(RUNTIME_CLASS(CUIThread));
+
+}
+
+void CImageToolApp::OnChatServer()
+{
+	// TODO: 여기에 명령 처리기 코드를 추가합니다.
+	AfxBeginThread(RUNTIME_CLASS(CUIServerThread));
+}
+
+
+

@@ -6,6 +6,7 @@
 #pragma once
 #include ".\IppImage\IppDib.h" // 상대경로 지정
 
+
 class CMyData;
 class CMyStick;
 class CMyEllipse;
@@ -177,6 +178,9 @@ public:
 //	afx_msg void OnChatClient();
 //	afx_msg void OnChatClient();
 //	afx_msg void OnChatClient();
+	afx_msg void OnBnClickedButtonExecute();
+	afx_msg void OnChatClient();
+	afx_msg void OnChatServer();
 };
 
 
