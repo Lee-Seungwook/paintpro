@@ -31,6 +31,7 @@ void CChattingServerDlg::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CChattingServerDlg, CDialogEx)
 	ON_WM_DESTROY()
 	ON_BN_CLICKED(IDC_BUTTON_REFRESH, &CChattingServerDlg::OnClickedButtonRefresh)
+	ON_BN_CLICKED(IDOK, &CChattingServerDlg::OnBnClickedOk)
 END_MESSAGE_MAP()
 
 
@@ -100,3 +101,10 @@ void CChattingServerDlg::OnDestroy()
 
 
 
+
+
+void CChattingServerDlg::OnBnClickedOk()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	OnDestroy();
+}

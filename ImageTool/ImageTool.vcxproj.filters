@@ -195,6 +195,9 @@
     <ClInclude Include="UIThread.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="UIServerThread.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ImageTool.cpp">
@@ -360,6 +363,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="UIThread.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="UIServerThread.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

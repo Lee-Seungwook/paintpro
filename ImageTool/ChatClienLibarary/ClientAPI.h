@@ -12,5 +12,5 @@ class DLL_CLIENT ClientAPI : public CSocket
 {
 public:
 	void APIClose(int nErrorCode);
-	void APIReceive(char *szBuffer, CString& tmp, CChattingClientDlg* (&handle));
+	void APIReceive(char *szBuffer, CString& tmp);
 };

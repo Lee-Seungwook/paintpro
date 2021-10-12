@@ -22,10 +22,10 @@ void CListenSocket::OnAccept(int nErrorCode)
 	pChild->SetListenSocket(this);
 	m_ptrChildSocketList.AddTail(pChild);
 
-	/*CChattingServerDlg* pMain = (CChattingServerDlg*)AfxGetApp()->GetMainWnd();
+	CChattingServerDlg* pMain = (CChattingServerDlg*)AfxGetMainWnd();
 
 	pMain->m_ListServer.AddString(_T("서버 접속 허용"));
-	pMain->m_ListServer.SetCurSel(pMain->m_ListServer.GetCount() - 1);*/
+	pMain->m_ListServer.SetCurSel(pMain->m_ListServer.GetCount() - 1);
 	CAsyncSocket::OnAccept(nErrorCode);
 }
 
@@ -33,23 +33,23 @@ void CListenSocket::OnAccept(int nErrorCode)
 void CListenSocket::CloseClientSocket(CSocket* pChild)
 {
 	// TODO: 여기에 구현 코드 추가.
-	/*POSITION pos;
+	POSITION pos;
 	pos = m_ptrChildSocketList.Find(pChild);
 	if (pos != NULL) {
 		pChild->ShutDown();
 		pChild->Close();
 	}
 	m_ptrChildSocketList.RemoveAt(pos);
-	delete pChild;*/
-	CServerListenAPI API;
-	API.APICloseClientSocket(pChild, m_ptrChildSocketList);
+	delete pChild;
+	//CServerListenAPI API;
+	//API.APICloseClientSocket(pChild, m_ptrChildSocketList);
 }
 
 
 void CListenSocket::BroadCast(char* pszBuffer, int len)
 {
 	// TODO: 여기에 구현 코드 추가.
-	/*POSITION pos;
+	POSITION pos;
 	pos = m_ptrChildSocketList.GetHeadPosition();
 	CChildSocket* pChild = NULL;
 
@@ -58,8 +58,8 @@ void CListenSocket::BroadCast(char* pszBuffer, int len)
 		pChild = (CChildSocket*)m_ptrChildSocketList.GetNext(pos);
 		if (pChild != NULL)
 			pChild->Send(pszBuffer, len * 2);
-	}*/
-	CServerListenAPI APIL;
-	APIL.APIBroadCast(pszBuffer, len, m_ptrChildSocketList);
+	}
+	/*CServerListenAPI APIL;
+	APIL.APIBroadCast(pszBuffer, len, m_ptrChildSocketList);*/
 }
 
