@@ -21,7 +21,7 @@ class CMyColorFill;
 
 class CImageToolDoc : public CDocument
 {
-protected: // serialization에서만 만들어집니다.
+public: // serialization에서만 만들어집니다.
 	CImageToolDoc() noexcept;
 	DECLARE_DYNCREATE(CImageToolDoc)
 
@@ -179,8 +179,11 @@ public:
 //	afx_msg void OnChatClient();
 //	afx_msg void OnChatClient();
 	afx_msg void OnBnClickedButtonExecute();
+//	afx_msg void OnChatClient();
+//	afx_msg void OnChatServer();
+//	afx_msg void OnChatClient();
 	afx_msg void OnChatClient();
-	afx_msg void OnChatServer();
 };
 
 
+extern CImageToolDoc theDoc;

@@ -1,5 +1,9 @@
 ﻿#pragma once
+#include "afxcmn.h"
 #include "ClientSocket.h"
+#include "IppImage/IppDib.h"
+#include "IppImage/IppImage.h"
+
 
 // CChattingClientDlg 대화 상자
 
@@ -27,7 +31,13 @@ public:
 	CButton m_ButtonConnect;
 	CString m_Order;
 
+	
+	IppDib m_DibSrc;
+	
+	IppDib m_DibRes;
+
 	BOOL m_bSel;
+	CRect rect;
 
 	CDocument* m_pDocument;
 	
@@ -43,4 +53,8 @@ public:
 //	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
 	afx_msg void OnLbnDblclkList();
 	afx_msg void OnClickedButtonExecute();
+	void SetImage(IppDib& dib);
+	
+	void MakePreviewImage();
+	afx_msg void OnPaint();
 };

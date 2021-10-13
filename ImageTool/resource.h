@@ -132,7 +132,6 @@
 #define IDC_BUTTON_REFRESH              1045
 #define IDC_BUTTON1                     1046
 #define IDC_BUTTON_EXECUTE              1046
-#define IDC_EDIT3                       1048
 #define IDC_EDIT_COMMAND                1048
 #define ID_32771                        32771
 #define ID_WINDOW_DUPLICATE             32772

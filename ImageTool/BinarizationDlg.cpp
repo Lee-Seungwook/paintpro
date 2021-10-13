@@ -50,6 +50,9 @@ void CBinarizationDlg::SetImage(IppDib& dib)
 {
 	m_DibSrc = dib;
 
+	if (m_DibSrc.IsValid() != NULL)
+		AfxMessageBox(_T("빵"));
+
 	// 반복적 이진화 방법을 이용한 (초기) 임계값 설정
 	IppByteImage imgSrc;
 	IppDibToImage(m_DibSrc, imgSrc);
@@ -70,6 +73,8 @@ void CBinarizationDlg::MakePreviewImage()
 BOOL CBinarizationDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
+	
+		
 
 	// TODO:  여기에 추가 초기화 작업을 추가합니다.
 	m_SliderThreshold.SetRange(0, 255);

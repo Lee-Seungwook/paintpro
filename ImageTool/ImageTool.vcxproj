@@ -99,6 +99,8 @@
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>$(solutiondir)ChatClienLibarary\</AdditionalLibraryDirectories>
       <LargeAddressAware>true</LargeAddressAware>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>

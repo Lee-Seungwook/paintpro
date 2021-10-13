@@ -156,7 +156,7 @@ public:
 //	afx_msg void OnChatServer();
 //	afx_msg void OnChatServer();
 //	afx_msg void OnChatClient();
-	afx_msg void OnChatClient();
+//	afx_msg void OnChatClient();
 	afx_msg void OnChatServer();
 };
 

@@ -94,7 +94,7 @@ BEGIN_MESSAGE_MAP(CImageToolView, CScrollView)
 //	ON_COMMAND(ID_CHAT_SERVER, &CImageToolView::OnChatServer)
 //ON_COMMAND(ID_CHAT_SERVER, &CImageToolView::OnChatServer)
 //ON_COMMAND(ID_CHAT_CLIENT, &CImageToolView::OnChatClient)
-ON_COMMAND(ID_CHAT_CLIENT, &CImageToolView::OnChatClient)
+//ON_COMMAND(ID_CHAT_CLIENT, &CImageToolView::OnChatClient)
 ON_COMMAND(ID_CHAT_SERVER, &CImageToolView::OnChatServer)
 END_MESSAGE_MAP()
 
@@ -1756,13 +1756,13 @@ void CImageToolView::OnAllErase()
 //}
 
 
-void CImageToolView::OnChatClient()
-{
-	// TODO: 여기에 명령 처리기 코드를 추가합니다.
-	
-	AfxBeginThread(RUNTIME_CLASS(CUIThread));
-	
-}
+//void CImageToolView::OnChatClient()
+//{
+//	// TODO: 여기에 명령 처리기 코드를 추가합니다.
+//	
+//	AfxBeginThread(RUNTIME_CLASS(CUIThread));
+//	
+//}
 
 
 

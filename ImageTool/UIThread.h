@@ -1,6 +1,6 @@
 #pragma once
 #include "stdafx.h"
-
+#include "IppImage/IppDib.h"
 
 
 class CUIThread :
@@ -8,7 +8,10 @@ class CUIThread :
 {
 public:
 	DECLARE_DYNCREATE(CUIThread)
+	
+	
 
 	virtual BOOL InitInstance();
+	
 };
 
