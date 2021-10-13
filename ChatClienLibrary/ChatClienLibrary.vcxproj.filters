@@ -33,6 +33,15 @@
     <ClCompile Include="CChildServerAPI.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="EnhanceAPI.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="FilterAPI.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometryAPI.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ChatClienLibrary.def">
@@ -63,6 +72,15 @@
     </ClInclude>
     <ClInclude Include="CChildServerAPI.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="EnhanceAPI.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="FilterAPI.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometryAPI.h">
+      <Filter>소스 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
