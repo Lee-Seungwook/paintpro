@@ -61,6 +61,8 @@
 
 #include "ChattingClientDlg.h"
 
+#include "UIThread.h"
+
 #include "MyData.h"
 #include "MyStick.h"
 #include "MyEllipse.h"
@@ -73,7 +75,7 @@
 #include "MyErase.h"
 #include "MyColorFill.h"
 
-
+#include <atlstr.h>
 
 
 #define SHOW_SPECTRUM_PHASE_IMAGE
@@ -202,6 +204,9 @@ ON_UPDATE_COMMAND_UI(ID_BITPLANE_SLICING, &CImageToolDoc::OnUpdateBitplaneSlicin
 //ON_COMMAND(ID_CHAT_CLIENT, &CImageToolDoc::OnChatClient)
 //ON_COMMAND(ID_CHAT_CLIENT, &CImageToolDoc::OnChatClient)
 //ON_COMMAND(ID_CHAT_CLIENT, &CImageToolDoc::OnChatClient)
+ON_BN_CLICKED(IDC_BUTTON_EXECUTE, &CImageToolDoc::OnBnClickedButtonExecute)
+ON_COMMAND(ID_CHAT_CLIENT, &CImageToolDoc::OnChatClient)
+ON_COMMAND(ID_CHAT_SERVER, &CImageToolDoc::OnChatServer)
 END_MESSAGE_MAP()
 
 	
@@ -2438,3 +2443,55 @@ void CImageToolDoc::OnUpdateBitplaneSlicing(CCmdUI *pCmdUI)
 //	// TODO: 여기에 명령 처리기 코드를 추가합니다.
 //	
 //}
+
+
+void CImageToolDoc::OnBnClickedButtonExecute()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CChattingClientDlg dlg;
+	CString Order = dlg.m_Order;
+	IppDib c_Dib;
+	IppDib dib;
+	c_Dib.PasteFromClipboard();
+	if ( Order.Compare( _T("이미지 반전")) )
+	{
+		/*if (dib.GetBitCount() == 8)
+		{
+			AfxMessageBox(_T("그레이"));
+		}
+		else if (dib.GetBitCount() == 24)
+		{
+			AfxMessageBox(_T("컬러"));
+		}
+		else
+			AfxMessageBox(_T("안됨!!!"));*/
+		CONVERT_DIB_TO_BYTEIMAGE(c_Dib, img) // 매크로 사용 (주석문 내용과 동일)
+		IppInverse(img);
+
+		//IppDib dib;
+		//IppImageToDib(img, dib); // 객체 변환
+		CONVERT_IMAGE_TO_DIB(img, dib) // 매크로 사용 (주석문 내용과 동일)
+
+		AfxPrintInfo(_T("[반전] 입력 영상 : %s"), GetTitle()); // 출력창 문자열 설정
+		AfxNewBitmap(dib);
+	}
+	else
+	{
+		AfxMessageBox(_T("안된다구!!!"));
+	}
+	// AfxMessageBox(_T("실행 버튼 누름"));
+}
+
+
+void CImageToolDoc::OnChatClient()
+{
+	// TODO: 여기에 명령 처리기 코드를 추가합니다.
+	AfxBeginThread(RUNTIME_CLASS(CUIThread));
+	
+}
+
+
+void CImageToolDoc::OnChatServer()
+{
+	// TODO: 여기에 명령 처리기 코드를 추가합니다.
+}

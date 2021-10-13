@@ -7,6 +7,13 @@
 
 #include "ServerListenAPI.h"
 
+void CServerListenAPI::APIAccept()
+{
+	CChattingServerDlg* pMain = (CChattingServerDlg*)AfxGetMainWnd();
+	pMain->m_ListServer.AddString(_T("서버 접속 허용"));
+	pMain->m_ListServer.SetCurSel(pMain->m_ListServer.GetCount() - 1);
+}
+
 void CServerListenAPI::APICloseClientSocket(CSocket* (&pChild), CPtrList &m_ptrChildSocketList)
 {
 	POSITION pos;

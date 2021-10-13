@@ -30,21 +30,13 @@ void CChattingServerDlg::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CChattingServerDlg, CDialogEx)
 	ON_WM_DESTROY()
-	ON_BN_CLICKED(IDC_BUTTON_REFRESH, &CChattingServerDlg::OnClickedButtonRefresh)
+	
 	ON_BN_CLICKED(IDOK, &CChattingServerDlg::OnBnClickedOk)
 END_MESSAGE_MAP()
 
 
 // CChattingServerDlg 메시지 처리기
-void CChattingServerDlg::OnClickedButtonRefresh()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	UpdateData();
 
-	AfxMessageBox(m_Server.input);
-	m_ListServer.InsertString(0, m_Server.input);
-	m_Server.tmp = _T("");
-}
 
 BOOL CChattingServerDlg::OnInitDialog()
 {
@@ -107,4 +99,5 @@ void CChattingServerDlg::OnBnClickedOk()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	OnDestroy();
+	::SendMessage(this->m_hWnd, WM_CLOSE, NULL, NULL);
 }

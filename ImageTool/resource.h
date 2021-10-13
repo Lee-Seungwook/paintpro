@@ -131,6 +131,9 @@
 #define IDC_IPADDRESS1                  1045
 #define IDC_BUTTON_REFRESH              1045
 #define IDC_BUTTON1                     1046
+#define IDC_BUTTON_EXECUTE              1046
+#define IDC_EDIT3                       1048
+#define IDC_EDIT_COMMAND                1048
 #define ID_32771                        32771
 #define ID_WINDOW_DUPLICATE             32772
 #define ID_32773                        32773
@@ -327,14 +330,16 @@
 #define ID_32984                        32984
 #define ID_CHAT_CLIENT                  32985
 #define ID_32986                        32986
+#define ID_32987                        32987
+#define ID_32988                        32988
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        376
-#define _APS_NEXT_COMMAND_VALUE         32987
-#define _APS_NEXT_CONTROL_VALUE         1047
+#define _APS_NEXT_COMMAND_VALUE         32989
+#define _APS_NEXT_CONTROL_VALUE         1049
 #define _APS_NEXT_SYMED_VALUE           311
 #endif
 #endif
