@@ -50,9 +50,6 @@ void CBinarizationDlg::SetImage(IppDib& dib)
 {
 	m_DibSrc = dib;
 
-	if (m_DibSrc.IsValid() != NULL)
-		AfxMessageBox(_T("빵"));
-
 	// 반복적 이진화 방법을 이용한 (초기) 임계값 설정
 	IppByteImage imgSrc;
 	IppDibToImage(m_DibSrc, imgSrc);

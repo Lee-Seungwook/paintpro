@@ -46,22 +46,6 @@ void IppResizeCubic(IppByteImage& imgSrc, IppByteImage& imgDst, int nw, int nh)
 	api.APIResizeCubic(imgSrc, imgDst, nw, nh);
 }
 
-// 한 행의 4개의 점을 이용하여 값을 구한다.
-double cubic_interpolation(double v1, double v2, double v3, double v4, double d)
-{
-	double v, p1, p2, p3, p4;
-
-	// 보간법을 적용
-	p1 = 2 * v2;
-	p2 = -v1 + v3;
-	p3 = 2 * v1 - 5 * v2 + 4 * v3 - v4;
-	p4 = -v1 + 3 * v2 - 3 * v3 + v4;
-
-	v = (p1 + d * (p2 + d * (p3 + d * p4))) / 2.;
-
-	return v;
-}
-
 
 // 영상의 회전 변환 구현
 void IppRotate(IppByteImage& imgSrc, IppByteImage& imgDst, double angle)

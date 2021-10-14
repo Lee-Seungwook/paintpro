@@ -19,7 +19,7 @@ void IppBinarization(IppByteImage& imgSrc, IppByteImage& imgDst, int threshold)
 	//{
 	//	pDst[i] = (pSrc[i] <= threshold) ? 0 : 255;
 	//}
-	AfxMessageBox(_T("이진화"));
+	// AfxMessageBox(_T("이진화"));
 	api.APIBinarization(imgSrc, imgDst, threshold);
 }
 
