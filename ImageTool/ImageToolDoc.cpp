@@ -641,6 +641,11 @@ void CImageToolDoc::OnArithmeticLogical()
 		CImageToolDoc* pDoc1 = (CImageToolDoc*)dlg.m_pDoc1;
 		CImageToolDoc* pDoc2 = (CImageToolDoc*)dlg.m_pDoc2;
 
+		if (pDoc1->m_Dib.GetBitCount() != pDoc2->m_Dib.GetBitCount()) {
+			AfxMessageBox(_T("같은 유형의 이미지를 선택하세요!!"));
+			return;
+		}
+
 		if (m_Dib.GetBitCount() == 8)
 		{
 			CONVERT_DIB_TO_BYTEIMAGE(pDoc1->m_Dib, img1)
