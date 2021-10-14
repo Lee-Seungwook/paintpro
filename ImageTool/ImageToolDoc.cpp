@@ -2486,9 +2486,5 @@ void CImageToolDoc::OnBnClickedButtonExecute()
 void CImageToolDoc::OnChatClient()
 {
 	// TODO: 여기에 명령 처리기 코드를 추가합니다.
-	
-	CChattingClientDlg dlg;
-	dlg.SetImage(m_Dib);
 	AfxBeginThread(RUNTIME_CLASS(CUIThread));
-	
 }
