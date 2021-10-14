@@ -95,11 +95,6 @@ BOOL CChattingClientDlg::OnInitDialog()
 	memset(&wd, 0, sizeof(wd));
 	WSAStartup(MAKEWORD(2, 2), &wd);
 
-	CImageToolApp* pApp = (CImageToolApp*)AfxGetApp();
-	POSITION pos = pApp->m_pImageDocTemplate->GetFirstDocPosition();
-	CImageToolDoc* pDoc = (CImageToolDoc*)pApp->m_pImageDocTemplate->GetNextDoc(pos);
-
-
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
 }

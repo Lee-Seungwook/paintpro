@@ -116,11 +116,9 @@ BEGIN_MESSAGE_MAP(CImageToolDoc, CDocument)
 	ON_COMMAND(ID_COLORBRIGHTNESS_CONTRAST, &CImageToolDoc::OnColorbrightnessContrast)
 	ON_UPDATE_COMMAND_UI(ID_COLORBRIGHTNESS_CONTRAST, &CImageToolDoc::OnUpdateColorbrightnessContrast)
 	ON_COMMAND(ID_GAMMA_CORRECTION, &CImageToolDoc::OnGammaCorrection)
-//	ON_UPDATE_COMMAND_UI(ID_GAMMA_CORRECTION, &CImageToolDoc::OnUpdateGammaCorrection)
 ON_COMMAND(ID_VIEW_HISTOGRAM, &CImageToolDoc::OnViewHistogram)
 ON_COMMAND(ID_HISTO_STRETCHING, &CImageToolDoc::OnHistoStretching)
 ON_COMMAND(ID_HISTO_EQUALIZATION, &CImageToolDoc::OnHistoEqualization)
-//ON_COMMAND(ID_ARIMETIC_LOGICAL, &CImageToolDoc::OnArimeticLogical)
 ON_COMMAND(ID_ARITHMETIC_LOGICAL, &CImageToolDoc::OnArithmeticLogical)
 ON_COMMAND(ID_BITPLANE_SLICING, &CImageToolDoc::OnBitplaneSlicing)
 ON_COMMAND(ID_FILTER_MEAN, &CImageToolDoc::OnFilterMean)
@@ -145,7 +143,6 @@ ON_COMMAND(ID_EDGE_ROBERTS, &CImageToolDoc::OnEdgeRoberts)
 ON_COMMAND(ID_EDGE_PREWITT, &CImageToolDoc::OnEdgePrewitt)
 ON_COMMAND(ID_EDGE_SOBEL, &CImageToolDoc::OnEdgeSobel)
 ON_COMMAND(ID_EDGE_CANNY, &CImageToolDoc::OnEdgeCanny)
-// ON_COMMAND(ID_HOUGH_LINE, &CImageToolDoc::OnHoughLine)
 ON_COMMAND(ID_HOUGH_LINE, &CImageToolDoc::OnHoughLine)
 ON_COMMAND(ID_HARRIS_CORNER, &CImageToolDoc::OnHarrisCorner)
 ON_COMMAND(ID_COLOR_GRAYSCALE, &CImageToolDoc::OnColorGrayscale)
@@ -202,15 +199,7 @@ ON_UPDATE_COMMAND_UI(ID_TRUECOLOR_CLOSING, &CImageToolDoc::OnUpdateTruecolorClos
 ON_COMMAND(ID_SEARCH_DOT, &CImageToolDoc::OnSearchDot)
 ON_COMMAND(ID_SEARCH_NOISE, &CImageToolDoc::OnSearchNoise)
 ON_UPDATE_COMMAND_UI(ID_BITPLANE_SLICING, &CImageToolDoc::OnUpdateBitplaneSlicing)
-//ON_COMMAND(ID_ALL_ERASE, &CImageToolDoc::OnAllErase)
-//ON_COMMAND(ID_CHAT_CLIENT, &CImageToolDoc::OnChatClient)
-//ON_COMMAND(ID_CHAT_CLIENT, &CImageToolDoc::OnChatClient)
-//ON_COMMAND(ID_CHAT_CLIENT, &CImageToolDoc::OnChatClient)
-ON_BN_CLICKED(IDC_BUTTON_EXECUTE, &CImageToolDoc::OnBnClickedButtonExecute)
-//ON_COMMAND(ID_CHAT_CLIENT, &CImageToolDoc::OnChatClient)
-//ON_COMMAND(ID_CHAT_SERVER, &CImageToolDoc::OnChatServer)
-//ON_COMMAND(ID_CHAT_CLIENT, &CImageToolDoc::OnChatClient)
-ON_COMMAND(ID_CHAT_CLIENT, &CImageToolDoc::OnChatClient)
+
 END_MESSAGE_MAP()
 
 	
@@ -385,8 +374,6 @@ BOOL CImageToolDoc::OnOpenDocument(LPCTSTR lpszPathName) // 파일 경로를 매
 	if (res)
 		AfxPrintInfo(_T("[파일 열기] 파일 경로: %s, 가로 크기: %d픽셀, 세로 크기: %d픽셀, 색상수: %d"),
 			lpszPathName, m_Dib.GetWidth(), m_Dib.GetHeight(), 0x01 << m_Dib.GetBitCount());
-
-
 	return res;
 }
 
@@ -394,14 +381,11 @@ BOOL CImageToolDoc::OnOpenDocument(LPCTSTR lpszPathName) // 파일 경로를 매
 BOOL CImageToolDoc::OnSaveDocument(LPCTSTR lpszPathName)
 {
 	// TODO: 여기에 특수화된 코드를 추가 및/또는 기본 클래스를 호출합니다.
-
-
 	return m_Dib.Save(CT2A(lpszPathName)); // 경로의 파일을 저장
 }
 
 UINT IntThread(LPVOID targ)
 {
-	
 	ThreadParams *pra = (ThreadParams*)targ;
 	
 	IppByteImage imgSrc = pra->imgT;
@@ -416,9 +400,7 @@ UINT IntThread(LPVOID targ)
 UINT CMedianThread(LPVOID targ)
 {
 	ThreadParams *pra1 = (ThreadParams*)targ;
-	// IppByteImage imgY = pra1->imgTy;
 	
-
 	IppByteImage imgSrcY = pra1->imgTy;
 	IppByteImage imgSrcU = pra1->imgTu;
 	IppByteImage imgSrcV = pra1->imgTv;
@@ -438,7 +420,6 @@ UINT CMedianThread(LPVOID targ)
 	CONVERT_IMAGE_TO_DIB(imgDst, dib)
 	AfxNewBitmap(dib);
 	return 0;
-
 }
 
 
@@ -463,8 +444,6 @@ void CImageToolDoc::OnEditCopy()
 void CImageToolDoc::OnImageInverse()
 {
 	// TODO: 여기에 명령 처리기 코드를 추가합니다.
-	//IppByteImage img;
-	//IppDibToImage(m_Dib, img); // 객체 변환
 	if (m_Dib.GetBitCount() == 8)
 	{
 		CONVERT_DIB_TO_BYTEIMAGE(m_Dib, img) // 매크로 사용 (주석문 내용과 동일)
@@ -598,14 +577,6 @@ void CImageToolDoc::OnGammaCorrection()
 	}
 }
 
-
-//void CImageToolDoc::OnUpdateGammaCorrection(CCmdUI *pCmdUI)
-//{
-//	// TODO: 여기에 명령 업데이트 UI 처리기 코드를 추가합니다.
-//	pCmdUI->Enable(m_Dib.GetBitCount() == 8);
-//}
-
-
 void CImageToolDoc::OnViewHistogram()
 {
 	// TODO: 여기에 명령 처리기 코드를 추가합니다.
@@ -651,14 +622,6 @@ void CImageToolDoc::OnHistoEqualization()
 	}
 	else if (m_Dib.GetBitCount() == 24)
 	{
-		/*CONVERT_DIB_TO_RGBIMAGE(m_Dib, img)
-		IppByteImage imgY, imgU, imgV;
-		IppColorSplitYUV(img, imgY, imgU, imgV);
-		IppHistogramEqualization(imgY);
-		IppRgbImage imgRes;
-		IppColorCombineYUV(imgY, imgU, imgV, imgRes);
-		CONVERT_IMAGE_TO_DIB(imgRes, dib);*/
-
 		CONVERT_DIB_TO_RGBIMAGE(m_Dib, img)
 		IppHistogramEqualization(img);
 		CONVERT_IMAGE_TO_DIB(img, dib)
@@ -1540,37 +1503,6 @@ void CImageToolDoc::OnEdgeCanny()
 	}
 }
 
-
-//void CImageToolDoc::OnHoughLine()
-//{
-//	CONVERT_DIB_TO_BYTEIMAGE(m_Dib, img)
-//		IppByteImage imgEdge;
-//	IppEdgeCanny(img, imgEdge, 1.4f, 30.f, 60.f);
-//
-//	std::vector<IppLineParam> lines;
-//	IppHoughLine(imgEdge, lines);
-//
-//	if (lines.size() == 0)
-//	{
-//		AfxMessageBox(_T("검출된 직선이 없습니다."));
-//		return;
-//	}
-//
-//	std::sort(lines.begin(), lines.end());
-//
-//	// 최대 10개의 직선만 화면에 그려줌.
-//	int cnt = min(10, lines.size());
-//	for (int i = 0; i < cnt; i++)
-//		IppDrawLine(img, lines[i], 255);
-//
-//	CONVERT_IMAGE_TO_DIB(img, dib)
-//
-//		AfxPrintInfo(_T("[허프 선 검출] 입력 영상: %s, 중요 직선: rho = %4.2f, angle = %4.2f, vote = %d"),
-//			GetTitle(), lines[0].rho, (lines[0].ang * 180 / 3.14f), lines[0].vote);
-//	AfxNewBitmap(dib);
-//}
-
-
 void CImageToolDoc::OnHoughLine()
 {
 	// TODO: 여기에 명령 처리기 코드를 추가합니다.
@@ -2413,78 +2345,3 @@ void CImageToolDoc::OnUpdateBitplaneSlicing(CCmdUI *pCmdUI)
 	pCmdUI->Enable(m_Dib.GetBitCount() == 8);
 }
 
-
-//void CImageToolDoc::OnAllErase()
-//{
-//	// TODO: 여기에 명령 처리기 코드를 추가합니다.
-//	m_bAErase = TRUE;
-//}
-
-
-
-
-//void CImageToolDoc::OnChatClient()
-//{
-//	// TODO: 여기에 명령 처리기 코드를 추가합니다.
-//	CChattingClientDlg dlg;
-//	if (dlg.DoModal() == IDOK)
-//	{
-//
-//	}
-//	
-//}
-
-
-//void CImageToolDoc::OnChatClient()
-//{
-//	// TODO: 여기에 명령 처리기 코드를 추가합니다.
-//	CChattingClientDlg dlg;
-//	dlg.DoModal();
-//}
-
-
-//void CImageToolDoc::OnChatClient()
-//{
-//	// TODO: 여기에 명령 처리기 코드를 추가합니다.
-//	
-//}
-
-
-void CImageToolDoc::OnBnClickedButtonExecute()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	
-	
-		
-}
-
-
-//void CImageToolDoc::OnChatClient()
-//{
-//	// TODO: 여기에 명령 처리기 코드를 추가합니다.
-//	AfxBeginThread(RUNTIME_CLASS(CUIThread));
-//	
-//}
-
-
-//void CImageToolDoc::OnChatServer()
-//{
-//	// TODO: 여기에 명령 처리기 코드를 추가합니다.
-//}
-
-
-//void CImageToolDoc::OnChatClient()
-//{
-//	// TODO: 여기에 명령 처리기 코드를 추가합니다.
-//	CChattingClientDlg dlg;
-//	dlg.SetImage(m_Dib);
-//	AfxBeginThread(RUNTIME_CLASS(CUIThread));
-//	
-//}
-
-
-void CImageToolDoc::OnChatClient()
-{
-	// TODO: 여기에 명령 처리기 코드를 추가합니다.
-	AfxBeginThread(RUNTIME_CLASS(CUIThread));
-}
