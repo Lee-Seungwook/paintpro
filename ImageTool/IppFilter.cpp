@@ -10,8 +10,8 @@
 
 #include "..\ChatClienLibrary\FilterAPI.h"
 #pragma comment( lib, "ChatClienLibrary.lib" )
-
 const double PI = 3.14159265358979323846;
+
 const float  PI_F = 3.14159265358979323846f;
 
 FilterAPI api;

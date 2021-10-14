@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "..\ImageTool\stdafx.h"
+
 #include "math.h"
 
 #ifndef _DLL_ENHANCE_

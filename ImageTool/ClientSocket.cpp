@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "ClientSocket.h"
 #include "ChattingClientDlg.h"
-#include <Windows.h>
+
 
 
 #include "ChatClienLibarary/ClientAPI.h"

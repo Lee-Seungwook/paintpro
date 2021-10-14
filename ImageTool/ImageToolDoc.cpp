@@ -78,6 +78,8 @@
 #include <atlstr.h>
 
 
+
+
 #define SHOW_SPECTRUM_PHASE_IMAGE
 
 
@@ -114,11 +116,9 @@ BEGIN_MESSAGE_MAP(CImageToolDoc, CDocument)
 	ON_COMMAND(ID_COLORBRIGHTNESS_CONTRAST, &CImageToolDoc::OnColorbrightnessContrast)
 	ON_UPDATE_COMMAND_UI(ID_COLORBRIGHTNESS_CONTRAST, &CImageToolDoc::OnUpdateColorbrightnessContrast)
 	ON_COMMAND(ID_GAMMA_CORRECTION, &CImageToolDoc::OnGammaCorrection)
-//	ON_UPDATE_COMMAND_UI(ID_GAMMA_CORRECTION, &CImageToolDoc::OnUpdateGammaCorrection)
 ON_COMMAND(ID_VIEW_HISTOGRAM, &CImageToolDoc::OnViewHistogram)
 ON_COMMAND(ID_HISTO_STRETCHING, &CImageToolDoc::OnHistoStretching)
 ON_COMMAND(ID_HISTO_EQUALIZATION, &CImageToolDoc::OnHistoEqualization)
-//ON_COMMAND(ID_ARIMETIC_LOGICAL, &CImageToolDoc::OnArimeticLogical)
 ON_COMMAND(ID_ARITHMETIC_LOGICAL, &CImageToolDoc::OnArithmeticLogical)
 ON_COMMAND(ID_BITPLANE_SLICING, &CImageToolDoc::OnBitplaneSlicing)
 ON_COMMAND(ID_FILTER_MEAN, &CImageToolDoc::OnFilterMean)
@@ -143,7 +143,6 @@ ON_COMMAND(ID_EDGE_ROBERTS, &CImageToolDoc::OnEdgeRoberts)
 ON_COMMAND(ID_EDGE_PREWITT, &CImageToolDoc::OnEdgePrewitt)
 ON_COMMAND(ID_EDGE_SOBEL, &CImageToolDoc::OnEdgeSobel)
 ON_COMMAND(ID_EDGE_CANNY, &CImageToolDoc::OnEdgeCanny)
-// ON_COMMAND(ID_HOUGH_LINE, &CImageToolDoc::OnHoughLine)
 ON_COMMAND(ID_HOUGH_LINE, &CImageToolDoc::OnHoughLine)
 ON_COMMAND(ID_HARRIS_CORNER, &CImageToolDoc::OnHarrisCorner)
 ON_COMMAND(ID_COLOR_GRAYSCALE, &CImageToolDoc::OnColorGrayscale)
@@ -200,13 +199,7 @@ ON_UPDATE_COMMAND_UI(ID_TRUECOLOR_CLOSING, &CImageToolDoc::OnUpdateTruecolorClos
 ON_COMMAND(ID_SEARCH_DOT, &CImageToolDoc::OnSearchDot)
 ON_COMMAND(ID_SEARCH_NOISE, &CImageToolDoc::OnSearchNoise)
 ON_UPDATE_COMMAND_UI(ID_BITPLANE_SLICING, &CImageToolDoc::OnUpdateBitplaneSlicing)
-//ON_COMMAND(ID_ALL_ERASE, &CImageToolDoc::OnAllErase)
-//ON_COMMAND(ID_CHAT_CLIENT, &CImageToolDoc::OnChatClient)
-//ON_COMMAND(ID_CHAT_CLIENT, &CImageToolDoc::OnChatClient)
-//ON_COMMAND(ID_CHAT_CLIENT, &CImageToolDoc::OnChatClient)
-ON_BN_CLICKED(IDC_BUTTON_EXECUTE, &CImageToolDoc::OnBnClickedButtonExecute)
-ON_COMMAND(ID_CHAT_CLIENT, &CImageToolDoc::OnChatClient)
-ON_COMMAND(ID_CHAT_SERVER, &CImageToolDoc::OnChatServer)
+
 END_MESSAGE_MAP()
 
 	
@@ -224,6 +217,7 @@ struct ThreadParams
 };
 
 
+CImageToolDoc theDoc;
 // CImageToolDoc 생성/소멸
 
 CImageToolDoc::CImageToolDoc() noexcept
@@ -380,8 +374,6 @@ BOOL CImageToolDoc::OnOpenDocument(LPCTSTR lpszPathName) // 파일 경로를 매
 	if (res)
 		AfxPrintInfo(_T("[파일 열기] 파일 경로: %s, 가로 크기: %d픽셀, 세로 크기: %d픽셀, 색상수: %d"),
 			lpszPathName, m_Dib.GetWidth(), m_Dib.GetHeight(), 0x01 << m_Dib.GetBitCount());
-
-
 	return res;
 }
 
@@ -389,14 +381,11 @@ BOOL CImageToolDoc::OnOpenDocument(LPCTSTR lpszPathName) // 파일 경로를 매
 BOOL CImageToolDoc::OnSaveDocument(LPCTSTR lpszPathName)
 {
 	// TODO: 여기에 특수화된 코드를 추가 및/또는 기본 클래스를 호출합니다.
-
-
 	return m_Dib.Save(CT2A(lpszPathName)); // 경로의 파일을 저장
 }
 
 UINT IntThread(LPVOID targ)
 {
-	
 	ThreadParams *pra = (ThreadParams*)targ;
 	
 	IppByteImage imgSrc = pra->imgT;
@@ -411,9 +400,7 @@ UINT IntThread(LPVOID targ)
 UINT CMedianThread(LPVOID targ)
 {
 	ThreadParams *pra1 = (ThreadParams*)targ;
-	// IppByteImage imgY = pra1->imgTy;
 	
-
 	IppByteImage imgSrcY = pra1->imgTy;
 	IppByteImage imgSrcU = pra1->imgTu;
 	IppByteImage imgSrcV = pra1->imgTv;
@@ -433,7 +420,6 @@ UINT CMedianThread(LPVOID targ)
 	CONVERT_IMAGE_TO_DIB(imgDst, dib)
 	AfxNewBitmap(dib);
 	return 0;
-
 }
 
 
@@ -458,8 +444,6 @@ void CImageToolDoc::OnEditCopy()
 void CImageToolDoc::OnImageInverse()
 {
 	// TODO: 여기에 명령 처리기 코드를 추가합니다.
-	//IppByteImage img;
-	//IppDibToImage(m_Dib, img); // 객체 변환
 	if (m_Dib.GetBitCount() == 8)
 	{
 		CONVERT_DIB_TO_BYTEIMAGE(m_Dib, img) // 매크로 사용 (주석문 내용과 동일)
@@ -593,14 +577,6 @@ void CImageToolDoc::OnGammaCorrection()
 	}
 }
 
-
-//void CImageToolDoc::OnUpdateGammaCorrection(CCmdUI *pCmdUI)
-//{
-//	// TODO: 여기에 명령 업데이트 UI 처리기 코드를 추가합니다.
-//	pCmdUI->Enable(m_Dib.GetBitCount() == 8);
-//}
-
-
 void CImageToolDoc::OnViewHistogram()
 {
 	// TODO: 여기에 명령 처리기 코드를 추가합니다.
@@ -646,14 +622,6 @@ void CImageToolDoc::OnHistoEqualization()
 	}
 	else if (m_Dib.GetBitCount() == 24)
 	{
-		/*CONVERT_DIB_TO_RGBIMAGE(m_Dib, img)
-		IppByteImage imgY, imgU, imgV;
-		IppColorSplitYUV(img, imgY, imgU, imgV);
-		IppHistogramEqualization(imgY);
-		IppRgbImage imgRes;
-		IppColorCombineYUV(imgY, imgU, imgV, imgRes);
-		CONVERT_IMAGE_TO_DIB(imgRes, dib);*/
-
 		CONVERT_DIB_TO_RGBIMAGE(m_Dib, img)
 		IppHistogramEqualization(img);
 		CONVERT_IMAGE_TO_DIB(img, dib)
@@ -672,6 +640,11 @@ void CImageToolDoc::OnArithmeticLogical()
 	{
 		CImageToolDoc* pDoc1 = (CImageToolDoc*)dlg.m_pDoc1;
 		CImageToolDoc* pDoc2 = (CImageToolDoc*)dlg.m_pDoc2;
+
+		if (pDoc1->m_Dib.GetBitCount() != pDoc2->m_Dib.GetBitCount()) {
+			AfxMessageBox(_T("같은 유형의 이미지를 선택하세요!!"));
+			return;
+		}
 
 		if (m_Dib.GetBitCount() == 8)
 		{
@@ -1535,37 +1508,6 @@ void CImageToolDoc::OnEdgeCanny()
 	}
 }
 
-
-//void CImageToolDoc::OnHoughLine()
-//{
-//	CONVERT_DIB_TO_BYTEIMAGE(m_Dib, img)
-//		IppByteImage imgEdge;
-//	IppEdgeCanny(img, imgEdge, 1.4f, 30.f, 60.f);
-//
-//	std::vector<IppLineParam> lines;
-//	IppHoughLine(imgEdge, lines);
-//
-//	if (lines.size() == 0)
-//	{
-//		AfxMessageBox(_T("검출된 직선이 없습니다."));
-//		return;
-//	}
-//
-//	std::sort(lines.begin(), lines.end());
-//
-//	// 최대 10개의 직선만 화면에 그려줌.
-//	int cnt = min(10, lines.size());
-//	for (int i = 0; i < cnt; i++)
-//		IppDrawLine(img, lines[i], 255);
-//
-//	CONVERT_IMAGE_TO_DIB(img, dib)
-//
-//		AfxPrintInfo(_T("[허프 선 검출] 입력 영상: %s, 중요 직선: rho = %4.2f, angle = %4.2f, vote = %d"),
-//			GetTitle(), lines[0].rho, (lines[0].ang * 180 / 3.14f), lines[0].vote);
-//	AfxNewBitmap(dib);
-//}
-
-
 void CImageToolDoc::OnHoughLine()
 {
 	// TODO: 여기에 명령 처리기 코드를 추가합니다.
@@ -1573,7 +1515,7 @@ void CImageToolDoc::OnHoughLine()
 	IppByteImage imgEdge;
 	IppEdgeCanny(img, imgEdge, 1.4f, 30.f, 60.f);
 
-	std::vector<IppLineParam> lines;
+	std::vector<APILineParam> lines;
 	IppHoughLine(imgEdge, lines);
 
 	if (lines.size() == 0)
@@ -1606,13 +1548,13 @@ void CImageToolDoc::OnHarrisCorner()
 		if (dlg.DoModal() == IDOK)
 		{
 			CONVERT_DIB_TO_BYTEIMAGE(m_Dib, img)
-				std::vector<IppPoint> corners;
+				std::vector<APIPoint> corners;
 			IppHarrisCorner(img, corners, dlg.m_nHarrisTh); // 입력 받은 임계값과 좌표를 저장할 배열을 넘겨줌
 
 			BYTE** ptr = img.GetPixels2D();
 
 			int x, y;
-			for (IppPoint cp : corners)
+			for (APIPoint cp : corners)
 			{
 				x = cp.x;
 				y = cp.y;
@@ -1635,13 +1577,13 @@ void CImageToolDoc::OnHarrisCorner()
 			CONVERT_DIB_TO_RGBIMAGE(m_Dib, imgColor)
 			IppByteImage img;
 			img.Convert(imgColor);
-			std::vector<IppPoint> corners;
+			std::vector<APIPoint> corners;
 			IppHarrisCorner(img, corners, dlg.m_nHarrisTh); // 입력 받은 임계값과 좌표를 저장할 배열을 넘겨줌
 
 			BYTE** ptr = img.GetPixels2D();
 
 			int x, y;
-			for (IppPoint cp : corners)
+			for (APIPoint cp : corners)
 			{
 				x = cp.x;
 				y = cp.y;
@@ -1935,12 +1877,12 @@ void CImageToolDoc::OnSegmentLabeling()
 	// TODO: 여기에 명령 처리기 코드를 추가합니다.
 	CONVERT_DIB_TO_BYTEIMAGE(m_Dib, img)
 	IppIntImage imgLabel;
-	std::vector<IppLabelInfo> labels;
+	std::vector<APILabelInfo> labels;
 	int label_cnt = IppLabeling(img, imgLabel, labels);
 
 	// 객체를 감싸는 사각형 그리기
 	BYTE** ptr = img.GetPixels2D();
-	for (IppLabelInfo& info : labels)
+	for (APILabelInfo& info : labels)
 	{
 		for (int j = info.miny; j <= info.maxy; j++)
 			ptr[j][info.minx] = ptr[j][info.maxx] = 128;
@@ -1962,17 +1904,17 @@ void CImageToolDoc::OnContourTacing()
 	// TODO: 여기에 명령 처리기 코드를 추가합니다.
 	CONVERT_DIB_TO_BYTEIMAGE(m_Dib, img)
 		IppIntImage imgLabel;
-	std::vector<IppLabelInfo> labels;
+	std::vector<APILabelInfo> labels;
 	int label_cnt = IppLabeling(img, imgLabel, labels);
 
 	IppByteImage imgContour(img.GetWidth(), img.GetHeight());
 	BYTE** ptr = imgContour.GetPixels2D();
-	for (IppLabelInfo& info : labels)
+	for (APILabelInfo& info : labels)
 	{
-		std::vector<IppPoint> cp;
+		std::vector<APIPoint> cp;
 		IppContourTracing(img, info.pixels[0].x, info.pixels[0].y, cp);
 
-		for (IppPoint& pt : cp)
+		for (APIPoint& pt : cp)
 			ptr[pt.y][pt.x] = 255;
 
 	}
@@ -2292,13 +2234,13 @@ void CImageToolDoc::OnSearchDot()
 		IppByteImage imgRes;
 		IppEdgeSobel(imgDst, imgRes);
 		IppIntImage imgLabel;
-		std::vector<IppLabelInfo> labels;
+		std::vector<APILabelInfo> labels;
 		int label_cnt = IppLabeling(imgRes, imgLabel, labels);
 		
 
 		// 객체를 감싸는 사각형 그리기
 		BYTE** ptr = imgDot.GetPixels2D();
-		for (IppLabelInfo& info : labels)
+		for (APILabelInfo& info : labels)
 		{
 			for (int j = info.miny; j <= info.maxy; j++)
 				ptr[j-1][info.minx] = ptr[j][info.minx] = ptr[j+1][info.minx] = ptr[j-1][info.maxx] = ptr[j][info.maxx] = ptr[j+1][info.maxx] =  255;
@@ -2334,13 +2276,13 @@ void CImageToolDoc::OnSearchDot()
 		IppByteImage imgRes;
 		IppEdgeSobel(imgDst, imgRes);
 		IppIntImage imgLabel;
-		std::vector<IppLabelInfo> labels;
+		std::vector<APILabelInfo> labels;
 		int label_cnt = IppLabeling(imgRes, imgLabel, labels);
 
 		
 		// 객체를 감싸는 사각형 그리기
 		RGBBYTE** ptr = imgDot.GetPixels2D();
-		for (IppLabelInfo& info : labels)
+		for (APILabelInfo& info : labels)
 		{
 			for (int j = info.miny; j <= info.maxy; j++)
 				ptr[j - 1][info.minx].r = ptr[j][info.minx].r = ptr[j + 1][info.minx].r = ptr[j - 1][info.maxx].r = ptr[j][info.maxx].r = ptr[j + 1][info.maxx].r = 255;
@@ -2408,90 +2350,3 @@ void CImageToolDoc::OnUpdateBitplaneSlicing(CCmdUI *pCmdUI)
 	pCmdUI->Enable(m_Dib.GetBitCount() == 8);
 }
 
-
-//void CImageToolDoc::OnAllErase()
-//{
-//	// TODO: 여기에 명령 처리기 코드를 추가합니다.
-//	m_bAErase = TRUE;
-//}
-
-
-
-
-//void CImageToolDoc::OnChatClient()
-//{
-//	// TODO: 여기에 명령 처리기 코드를 추가합니다.
-//	CChattingClientDlg dlg;
-//	if (dlg.DoModal() == IDOK)
-//	{
-//
-//	}
-//	
-//}
-
-
-//void CImageToolDoc::OnChatClient()
-//{
-//	// TODO: 여기에 명령 처리기 코드를 추가합니다.
-//	CChattingClientDlg dlg;
-//	dlg.DoModal();
-//}
-
-
-//void CImageToolDoc::OnChatClient()
-//{
-//	// TODO: 여기에 명령 처리기 코드를 추가합니다.
-//	
-//}
-
-
-void CImageToolDoc::OnBnClickedButtonExecute()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CChattingClientDlg dlg;
-	CString Order = dlg.m_Order;
-	IppDib c_Dib;
-	IppDib dib;
-	c_Dib.PasteFromClipboard();
-	if ( Order.Compare( _T("이미지 반전")) )
-	{
-		/*if (dib.GetBitCount() == 8)
-		{
-			AfxMessageBox(_T("그레이"));
-		}
-		else if (dib.GetBitCount() == 24)
-		{
-			AfxMessageBox(_T("컬러"));
-		}
-		else
-			AfxMessageBox(_T("안됨!!!"));*/
-		CONVERT_DIB_TO_BYTEIMAGE(c_Dib, img) // 매크로 사용 (주석문 내용과 동일)
-		IppInverse(img);
-
-		//IppDib dib;
-		//IppImageToDib(img, dib); // 객체 변환
-		CONVERT_IMAGE_TO_DIB(img, dib) // 매크로 사용 (주석문 내용과 동일)
-
-		AfxPrintInfo(_T("[반전] 입력 영상 : %s"), GetTitle()); // 출력창 문자열 설정
-		AfxNewBitmap(dib);
-	}
-	else
-	{
-		AfxMessageBox(_T("안된다구!!!"));
-	}
-	// AfxMessageBox(_T("실행 버튼 누름"));
-}
-
-
-void CImageToolDoc::OnChatClient()
-{
-	// TODO: 여기에 명령 처리기 코드를 추가합니다.
-	AfxBeginThread(RUNTIME_CLASS(CUIThread));
-	
-}
-
-
-void CImageToolDoc::OnChatServer()
-{
-	// TODO: 여기에 명령 처리기 코드를 추가합니다.
-}

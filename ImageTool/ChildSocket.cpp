@@ -2,7 +2,7 @@
 #include "ChildSocket.h"
 #include "ListenSocket.h"
 #include "ChattingServerDlg.h"
-#include <Windows.h>
+
 
 #include "ChatClienLibarary/CChildServerAPI.h"
 #pragma comment( lib, "ChatClienLibrary.lib" )

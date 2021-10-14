@@ -1,5 +1,5 @@
 #pragma once
-
+#include "..\ImageTool\stdafx.h"
 #include "..\ImageTool\IppImage\IppImage.h"
 
 #ifdef _DLL_ENHANCE_
