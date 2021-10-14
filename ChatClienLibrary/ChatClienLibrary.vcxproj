@@ -194,7 +194,7 @@
     <ClCompile Include="CChildServerAPI.cpp" />
     <ClCompile Include="ChatClienLibrary.cpp" />
     <ClCompile Include="ClientAPI.cpp" />
-    <ClCompile Include="ColorAPIcpp.cpp" />
+    <ClCompile Include="ColorAPI.cpp" />
     <ClCompile Include="dllmain.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>

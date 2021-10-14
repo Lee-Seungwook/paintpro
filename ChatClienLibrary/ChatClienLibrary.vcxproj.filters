@@ -48,10 +48,10 @@
     <ClCompile Include="FeatureAPI.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="ColorAPIcpp.cpp">
+    <ClCompile Include="SegmentAPI.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="SegmentAPI.cpp">
+    <ClCompile Include="ColorAPI.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
