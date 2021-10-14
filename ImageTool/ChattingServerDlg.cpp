@@ -32,7 +32,6 @@ BEGIN_MESSAGE_MAP(CChattingServerDlg, CDialogEx)
 	ON_WM_DESTROY()
 	
 	ON_BN_CLICKED(IDOK, &CChattingServerDlg::OnBnClickedOk)
-//	ON_BN_CLICKED(IDCANCEL, &CChattingServerDlg::OnBnClickedCancel)
 END_MESSAGE_MAP()
 
 
@@ -99,11 +98,3 @@ void CChattingServerDlg::OnBnClickedOk()
 	::SendMessage(this->m_hWnd, WM_CLOSE, NULL, NULL);
 }
 
-
-//void CChattingServerDlg::OnBnClickedCancel()
-//{
-//	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-//	OnDestroy();
-//	::SendMessage(this->m_hWnd, WM_CLOSE, NULL, NULL);
-//	CDialogEx::OnCancel();
-//}
