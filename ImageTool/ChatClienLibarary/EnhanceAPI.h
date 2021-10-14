@@ -1,6 +1,6 @@
 #pragma once
-
-#include "IppImage.h"
+#include "..\stdafx.h"
+#include "..\IppImage\IppImage.h"
 
 #ifdef _DLL_ENHANCE_
 #define DLL_ENHANCE _declspec(dllexport)

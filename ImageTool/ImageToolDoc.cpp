@@ -78,6 +78,8 @@
 #include <atlstr.h>
 
 
+
+
 #define SHOW_SPECTRUM_PHASE_IMAGE
 
 
@@ -1576,7 +1578,7 @@ void CImageToolDoc::OnHoughLine()
 	IppByteImage imgEdge;
 	IppEdgeCanny(img, imgEdge, 1.4f, 30.f, 60.f);
 
-	std::vector<IppLineParam> lines;
+	std::vector<APILineParam> lines;
 	IppHoughLine(imgEdge, lines);
 
 	if (lines.size() == 0)
@@ -1609,13 +1611,13 @@ void CImageToolDoc::OnHarrisCorner()
 		if (dlg.DoModal() == IDOK)
 		{
 			CONVERT_DIB_TO_BYTEIMAGE(m_Dib, img)
-				std::vector<IppPoint> corners;
+				std::vector<APIPoint> corners;
 			IppHarrisCorner(img, corners, dlg.m_nHarrisTh); // 입력 받은 임계값과 좌표를 저장할 배열을 넘겨줌
 
 			BYTE** ptr = img.GetPixels2D();
 
 			int x, y;
-			for (IppPoint cp : corners)
+			for (APIPoint cp : corners)
 			{
 				x = cp.x;
 				y = cp.y;
@@ -1638,13 +1640,13 @@ void CImageToolDoc::OnHarrisCorner()
 			CONVERT_DIB_TO_RGBIMAGE(m_Dib, imgColor)
 			IppByteImage img;
 			img.Convert(imgColor);
-			std::vector<IppPoint> corners;
+			std::vector<APIPoint> corners;
 			IppHarrisCorner(img, corners, dlg.m_nHarrisTh); // 입력 받은 임계값과 좌표를 저장할 배열을 넘겨줌
 
 			BYTE** ptr = img.GetPixels2D();
 
 			int x, y;
-			for (IppPoint cp : corners)
+			for (APIPoint cp : corners)
 			{
 				x = cp.x;
 				y = cp.y;
@@ -1938,12 +1940,12 @@ void CImageToolDoc::OnSegmentLabeling()
 	// TODO: 여기에 명령 처리기 코드를 추가합니다.
 	CONVERT_DIB_TO_BYTEIMAGE(m_Dib, img)
 	IppIntImage imgLabel;
-	std::vector<IppLabelInfo> labels;
+	std::vector<APILabelInfo> labels;
 	int label_cnt = IppLabeling(img, imgLabel, labels);
 
 	// 객체를 감싸는 사각형 그리기
 	BYTE** ptr = img.GetPixels2D();
-	for (IppLabelInfo& info : labels)
+	for (APILabelInfo& info : labels)
 	{
 		for (int j = info.miny; j <= info.maxy; j++)
 			ptr[j][info.minx] = ptr[j][info.maxx] = 128;
@@ -1965,17 +1967,17 @@ void CImageToolDoc::OnContourTacing()
 	// TODO: 여기에 명령 처리기 코드를 추가합니다.
 	CONVERT_DIB_TO_BYTEIMAGE(m_Dib, img)
 		IppIntImage imgLabel;
-	std::vector<IppLabelInfo> labels;
+	std::vector<APILabelInfo> labels;
 	int label_cnt = IppLabeling(img, imgLabel, labels);
 
 	IppByteImage imgContour(img.GetWidth(), img.GetHeight());
 	BYTE** ptr = imgContour.GetPixels2D();
-	for (IppLabelInfo& info : labels)
+	for (APILabelInfo& info : labels)
 	{
-		std::vector<IppPoint> cp;
+		std::vector<APIPoint> cp;
 		IppContourTracing(img, info.pixels[0].x, info.pixels[0].y, cp);
 
-		for (IppPoint& pt : cp)
+		for (APIPoint& pt : cp)
 			ptr[pt.y][pt.x] = 255;
 
 	}
@@ -2295,13 +2297,13 @@ void CImageToolDoc::OnSearchDot()
 		IppByteImage imgRes;
 		IppEdgeSobel(imgDst, imgRes);
 		IppIntImage imgLabel;
-		std::vector<IppLabelInfo> labels;
+		std::vector<APILabelInfo> labels;
 		int label_cnt = IppLabeling(imgRes, imgLabel, labels);
 		
 
 		// 객체를 감싸는 사각형 그리기
 		BYTE** ptr = imgDot.GetPixels2D();
-		for (IppLabelInfo& info : labels)
+		for (APILabelInfo& info : labels)
 		{
 			for (int j = info.miny; j <= info.maxy; j++)
 				ptr[j-1][info.minx] = ptr[j][info.minx] = ptr[j+1][info.minx] = ptr[j-1][info.maxx] = ptr[j][info.maxx] = ptr[j+1][info.maxx] =  255;
@@ -2337,13 +2339,13 @@ void CImageToolDoc::OnSearchDot()
 		IppByteImage imgRes;
 		IppEdgeSobel(imgDst, imgRes);
 		IppIntImage imgLabel;
-		std::vector<IppLabelInfo> labels;
+		std::vector<APILabelInfo> labels;
 		int label_cnt = IppLabeling(imgRes, imgLabel, labels);
 
 		
 		// 객체를 감싸는 사각형 그리기
 		RGBBYTE** ptr = imgDot.GetPixels2D();
-		for (IppLabelInfo& info : labels)
+		for (APILabelInfo& info : labels)
 		{
 			for (int j = info.miny; j <= info.maxy; j++)
 				ptr[j - 1][info.minx].r = ptr[j][info.minx].r = ptr[j + 1][info.minx].r = ptr[j - 1][info.maxx].r = ptr[j][info.maxx].r = ptr[j + 1][info.maxx].r = 255;
